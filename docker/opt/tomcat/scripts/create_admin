@@ -1,0 +1,18 @@
+#!/bin/bash
+
+if [ -z $TOMCAT_PASS ]; then
+    echo "Tomcat admin password must be set"
+    exit 1
+fi
+
+sed -i -r 's/<\/tomcat-users>//' $CATALINA_HOME/conf/tomcat-users.xml
+echo '<role rolename="manager-gui"/>' >> $CATALINA_HOME/conf/tomcat-users.xml
+echo '<role rolename="manager-script"/>' >> $CATALINA_HOME/conf/tomcat-users.xml
+echo '<role rolename="manager-jmx"/>' >> $CATALINA_HOME/conf/tomcat-users.xml
+echo '<role rolename="admin-gui"/>' >> $CATALINA_HOME/conf/tomcat-users.xml
+echo '<role rolename="admin-script"/>' >> $CATALINA_HOME/conf/tomcat-users.xml
+echo "<user username=\"admin\" password=\"$TOMCAT_PASS\" roles=\"manager-gui,manager-script,manager-jmx,admin-gui, admin-script\"/>" >> $CATALINA_HOME/conf/tomcat-users.xml
+echo '</tomcat-users>' >> $CATALINA_HOME/conf/tomcat-users.xml 
+
+exit 0
+
