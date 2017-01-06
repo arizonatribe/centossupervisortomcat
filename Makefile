@@ -1,6 +1,6 @@
 SHELL := /bin/bash
 NAME = arizonatribe/centossupervisortomcat
-VERSION = 1.0.0
+VERSION = 1.0.2
 
 docker:
 	@docker build --rm=true -t $(NAME):$(VERSION) ./

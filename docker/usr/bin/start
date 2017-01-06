@@ -3,9 +3,9 @@ set -e
 set -u
 set -o pipefail
 
-if [ ! -f $CATALINA_HOME/scripts/.tomcat_admin_created ]; then
-    $CATALINA_HOME/scripts/create_admin && \
-    touch $CATALINA_HOME/scripts/.tomcat_admin_created
+if [ ! -f /opt/scripts/.tomcat_admin_created ]; then
+    /opt/scripts/create_admin && \
+    touch /opt/scripts/.tomcat_admin_created
 fi
 
 exec supervisord -n -c /etc/supervisord.conf

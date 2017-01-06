@@ -33,7 +33,7 @@ RUN groupadd -r tomcat && \
     useradd -g tomcat -d ${CATALINA_HOME} -s /sbin/nologin  -c "Tomcat user" tomcat && \
     chown -R tomcat:tomcat ${CATALINA_HOME} /var/log
 
-VOLUME ["/opt/tomcat/webapps", "/opt/tomcat/scripts"]
+VOLUME ["/opt/scripts"]
 
 USER tomcat
 
